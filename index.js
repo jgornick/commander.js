@@ -177,6 +177,22 @@ Command.prototype.command = function(name, desc, opts) {
 };
 
 /**
+ * Add Command
+ * @param {Command} command
+ */
+Command.prototype.addCommand = function(command) {
+  if (command.description()) {
+    this.executables = true;
+    this._execs[cmd._name] = true;
+  }
+
+  this.commands.push(command);
+  command.parent = this;
+
+  return command;
+};
+
+/**
  * Define argument syntax for the top-level command.
  *
  * @api public
